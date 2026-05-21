@@ -10,7 +10,7 @@ class GeneralSettingsSeeder extends Seeder
     {
         // Default general settings
         $data = [
-            'school_name' => 'SMK 1 Indonesia',
+            'school_name' => 'SMP PGRI 1 Ciputat',
             'school_year' => '2024/2025',
             'copyright'   => '© 2025 All rights reserved.',
             'logo'        => null,
