@@ -364,11 +364,16 @@ input, select { font-family: var(--font); }
 
 .btn-outline {
   background: transparent;
-  color: var(--text-secondary);
-  border-color: var(--border);
+  color: var(--primary);
+  border-color: rgba(124, 58, 237, 0.3);
+  transition: all 0.2s ease;
 }
 
-.btn-outline:hover { background: var(--background); }
+.btn-outline:hover {
+  background: rgba(124, 58, 237, 0.06);
+  border-color: var(--primary);
+  color: var(--primary-hover);
+}
 
 .btn-ghost {
   background: transparent;
@@ -530,10 +535,16 @@ tbody tr:hover { background: #FAFAFA; }
    PAGE-LEVEL HELPERS
    ============================================================ */
 .page-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 24px !important;
+  min-height: auto !important;
+  max-height: none !important;
+  height: auto !important;
+  color: inherit !important;
+  background: none !important;
+  padding: 0 !important;
 }
 
 .page-title {
@@ -875,3 +886,21 @@ table {
 /* Override MD's perfect-scrollbar */
 .ps > .ps__rail-x,
 .ps > .ps__rail-y { display: none !important; }
+
+/* DM Uploader Premium Styling */
+.dm-uploader {
+  border: 2px dashed rgba(124, 58, 237, 0.3) !important;
+  background: rgba(124, 58, 237, 0.02) !important;
+}
+.dm-uploader:hover,
+.dm-uploader.active {
+  border-color: var(--primary) !important;
+  background: rgba(124, 58, 237, 0.06) !important;
+}
+.dm-upload-icon i {
+  color: var(--primary) !important;
+  transition: transform 0.2s ease;
+}
+.dm-uploader:hover .dm-upload-icon i {
+  transform: translateY(-4px);
+}
