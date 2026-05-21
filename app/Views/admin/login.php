@@ -50,15 +50,18 @@
                                 <a href="<?= url_to('forgot') ?>" style="font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none;">Lupa password?</a>
                             <?php endif; ?>
                         </div>
-                        <div style="position: relative; display: flex; align-items: center;">
+                        <div style="position: relative; display: flex; align-items: center; width: 100%;">
                             <i class="material-icons text-primary" style="position: absolute; left: 16px; font-size: 20px; pointer-events: none;">lock</i>
                             <input 
                                 type="password" 
                                 name="password" 
                                 class="form-control" 
-                                style="width: 100%; height: 48px; padding-left: 48px !important; padding-right: 16px !important; font-size: 15px; border-radius: 12px; background: #f8fafc; border: 1px solid <?php echo session('errors.password') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
+                                style="width: 100%; height: 48px; padding-left: 48px !important; padding-right: 48px !important; font-size: 15px; border-radius: 12px; background: #f8fafc; border: 1px solid <?php echo session('errors.password') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
                                 placeholder="••••••••"
                             >
+                            <button type="button" id="togglePassword" style="position: absolute; right: 16px; background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; color: #94a3b8; outline: none; transition: color 0.2s;">
+                                <i class="material-icons" id="passwordIcon" style="font-size: 20px;">visibility_off</i>
+                            </button>
                         </div>
                         <?php if (session('errors.password')): ?>
                             <p style="margin-top: 8px; font-size: 13px; color: #ef4444; font-weight: 500;"><?= session('errors.password') ?></p>
@@ -94,4 +97,22 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('togglePassword')?.addEventListener('click', function() {
+    const passwordInput = document.getElementsByName('password')[0];
+    const passwordIcon = document.getElementById('passwordIcon');
+    if (passwordInput && passwordIcon) {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordIcon.textContent = 'visibility';
+            this.style.color = 'var(--primary)';
+        } else {
+            passwordInput.type = 'password';
+            passwordIcon.textContent = 'visibility_off';
+            this.style.color = '#94a3b8';
+        }
+    }
+});
+</script>
 <?= $this->endSection(); ?>
