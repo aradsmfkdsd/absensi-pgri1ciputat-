@@ -131,26 +131,29 @@
                     <p class="card-category"><?= $dateNow; ?></p>
                 </div>
                 <div class="card-body flex-1 flex items-center justify-center">
-                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 text-center w-full">
-                        <div>
-                            <h5 class="text-sm font-semibold text-success uppercase tracking-wider mb-2">Hadir</h5>
-                            <h4 class="text-3xl font-bold text-gray-800"><?= $jumlahKehadiranGuru['hadir']; ?></h4>
+                    <div class="row text-center flex-nowrap w-full">
+                        <div class="col-2">
+                            <h5 class="text-success text-nowrap"><b>Hadir</b></h5>
+                            <h4 class="text-nowrap"><?= $jumlahKehadiranGuru['hadir']; ?></h4>
                         </div>
-                        <div>
-                            <h5 class="text-sm font-semibold text-warning uppercase tracking-wider mb-2">Sakit</h5>
-                            <h4 class="text-3xl font-bold text-gray-800"><?= $jumlahKehadiranGuru['sakit']; ?></h4>
+                        <div class="col-2">
+                            <h5 class="text-warning text-nowrap"><b>Sakit</b></h5>
+                            <h4 class="text-nowrap"><?= $jumlahKehadiranGuru['sakit']; ?></h4>
                         </div>
-                        <div>
-                            <h5 class="text-sm font-semibold text-info uppercase tracking-wider mb-2">Izin</h5>
-                            <h4 class="text-3xl font-bold text-gray-800"><?= $jumlahKehadiranGuru['izin']; ?></h4>
+                        <div class="col-2">
+                            <h5 class="text-info text-nowrap"><b>Izin</b></h5>
+                            <h4 class="text-nowrap"><?= $jumlahKehadiranGuru['izin']; ?></h4>
                         </div>
-                        <div>
-                            <h5 class="text-sm font-semibold text-danger uppercase tracking-wider mb-2">Alfa</h5>
-                            <h4 class="text-3xl font-bold text-gray-800"><?= $jumlahKehadiranGuru['alfa']; ?></h4>
+                        <div class="col-2">
+                            <h5 class="text-danger text-nowrap"><b>Alfa</b></h5>
+                            <h4 class="text-nowrap"><?= $jumlahKehadiranGuru['alfa']; ?></h4>
                         </div>
-                        <div class="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-gray-200 pt-4 sm:pt-0">
-                            <h5 class="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Total</h5>
-                            <h4 class="text-3xl font-bold text-gray-800"><?= $totalGuru; ?></h4>
+                        <div class="col-1">
+                            <div class="border-right mx-auto h-100" style="width: 0;"></div>
+                        </div>
+                        <div class="col-2 col-sm-3">
+                            <h5 class="text-primary text-nowrap"><b>Total</b></h5>
+                            <h4 class="text-nowrap"><?= $totalGuru; ?></h4>
                         </div>
                     </div>
                 </div>
