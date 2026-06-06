@@ -230,13 +230,16 @@ class Scan extends BaseController
       if (empty($provider)) {
          return;
       }
-      if (empty($token)) {
+      if (empty($token) && $provider !== 'Baileys') {
          return;
       }
 
       switch ($provider) {
          case 'Fonnte':
             $whatsapp = new \App\Libraries\Whatsapp\Fonnte\Fonnte($token);
+            break;
+         case 'Baileys':
+            $whatsapp = new \App\Libraries\Whatsapp\Baileys\Baileys($token);
             break;
          default:
             return;

@@ -1,0 +1,17 @@
+{
+  "name": "whatsapp-gateway-baileys",
+  "version": "1.0.0",
+  "description": "WhatsApp Gateway using @whiskeysockets/baileys",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^7.0.0-rc13",
+    "express": "^4.19.2",
+    "pino": "^8.21.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
