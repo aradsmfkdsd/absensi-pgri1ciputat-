@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <!-- PAGE HEADER -->
-<div class="page-header">
+<div class="admin-page-header">
    <div>
       <h1 class="page-title">Registrasi Petugas</h1>
       <div class="breadcrumb">
