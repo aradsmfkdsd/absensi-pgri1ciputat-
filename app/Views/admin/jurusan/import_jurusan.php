@@ -17,23 +17,24 @@
 
 <?= view('admin/_messages'); ?>
 
-<div class="flex flex-col md:flex-row gap-6">
-   <!-- Left: Upload Section -->
-   <div class="flex-1">
-      <div class="card">
-         <div class="mb-4">
-            <h2 style="font-size:16px;font-weight:600;color:var(--text-primary);">Bulk Upload CSV Jurusan</h2>
-            <p style="font-size:13px;color:var(--text-muted);">Import data jurusan dari CSV</p>
+<div class="card">
+   <div class="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+      <!-- Left: Upload Section (60%) -->
+      <div class="flex-1 p-6 sm:p-8">
+         <div class="mb-6">
+            <h2 style="font-size:16px;font-weight:600;color:var(--text-primary); margin:0 0 4px 0;">Bulk Upload CSV Jurusan</h2>
+            <p style="font-size:13px;color:var(--text-muted); margin:0;">Import data jurusan dari CSV</p>
          </div>
 
-         <div class="form-group">
+         <div class="form-group mb-0" style="padding-bottom: 0 !important;">
             <div class="dm-uploader-container">
-               <div id="drag-and-drop-zone" class="dm-uploader p-4" style="border: 2px dashed var(--border); border-radius: var(--r-xl); text-align: center; background: var(--surface); transition: all 0.2s;">
-                  <p class="dm-upload-icon" style="margin-bottom: 12px;">
-                     <i class="material-icons" style="font-size: 48px; color: var(--primary-soft);">cloud_upload</i>
+               <div id="drag-and-drop-zone" class="dm-uploader p-6 sm:p-8" style="border: 2px dashed rgba(124, 58, 237, 0.25); border-radius: var(--r-xl); text-align: center; background: rgba(124, 58, 237, 0.01); transition: all 0.3s ease; cursor: pointer;">
+                  <p class="dm-upload-icon" style="margin-bottom: 16px;">
+                     <i class="material-icons" style="font-size: 56px; color: var(--primary); opacity: 0.85;">cloud_upload</i>
                   </p>
-                  <h3 style="font-size: 15px; font-weight: 500; color: var(--text-secondary); margin-bottom: 16px;">Tarik dan letakkan file CSV di sini</h3>
-                  <div class="btn btn-primary" style="position: relative; overflow: hidden;">
+                  <h3 style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-top:0; margin-bottom: 4px;">Tarik &amp; Letakkan File CSV</h3>
+                  <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">atau klik tombol di bawah untuk memilih file</p>
+                  <div class="btn btn-primary" style="position: relative; overflow: hidden; padding: 10px 24px; border-radius: var(--r-md); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);">
                      <span>Pilih File Browser</span>
                      <input type="file" title='Click to add Files' style="position: absolute; top: 0; right: 0; margin: 0; padding: 0; font-size: 20px; cursor: pointer; opacity: 0; height: 100%;" />
                   </div>
@@ -41,7 +42,7 @@
             </div>
 
             <!-- Upload Progress/Spinner -->
-            <div id="csv_upload_spinner" class="csv-upload-spinner" style="display:none; text-align: center; margin-top: 20px;">
+            <div id="csv_upload_spinner" class="csv-upload-spinner" style="display:none; text-align: center; margin-top: 24px;">
                <strong class="text-csv-importing" style="font-size: 14px; color: var(--primary);">Mengimpor Data Jurusan...</strong>
                <strong class="text-csv-import-completed" style="font-size: 14px; color: var(--success); display: none;">Selesai!</strong>
                <div class="spinner-bounce" style="margin-top: 10px;">
@@ -52,33 +53,31 @@
             </div>
 
             <!-- Upload Results List -->
-            <div class="csv-uploaded-files-container" style="margin-top: 20px;">
-               <ul id="csv_uploaded_files" class="list-group csv-uploaded-files" style="list-style: none; padding: 0;"></ul>
+            <div class="csv-uploaded-files-container" style="margin-top: 24px; max-height: 250px; overflow-y: auto;">
+               <ul id="csv_uploaded_files" class="list-group csv-uploaded-files" style="list-style: none; padding: 0; margin: 0;"></ul>
             </div>
          </div>
       </div>
-   </div>
 
-   <!-- Right: Help & Instructions -->
-   <div style="width: 100%; max-width: 320px;">
-      <div class="card">
-         <div class="mb-4">
-            <h2 style="font-size:16px;font-weight:600;color:var(--text-primary);">Panduan Import</h2>
-            <p style="font-size:13px;color:var(--text-muted);">Dokumen bantuan untuk file CSV</p>
+      <!-- Right: Help & Instructions (40%) -->
+      <div class="w-full lg:w-[320px] p-6 sm:p-8 bg-gray-50/50">
+         <div class="mb-6">
+            <h2 style="font-size:16px;font-weight:600;color:var(--text-primary); margin:0 0 4px 0;">Panduan Import</h2>
+            <p style="font-size:13px;color:var(--text-muted); margin:0;">Dokumen bantuan untuk file CSV</p>
          </div>
 
          <form action="<?= base_url('admin/jurusan/downloadCSVFilePost'); ?>" method="post">
             <?= csrf_field(); ?>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-               <button class="btn btn-primary w-full justify-center" name="submit" value="csv_jurusan_template">
+               <button class="btn btn-primary w-full justify-center" name="submit" value="csv_jurusan_template" style="background: var(--primary); color: #fff;">
                   <i class="material-icons">file_download</i> Download Template CSV
                </button>
             </div>
          </form>
 
-         <div style="margin-top: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.6;">
-            <strong>Catatan:</strong>
-            <ul style="padding-left: 16px; margin-top: 8px;">
+         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-soft); font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
+            <strong style="color: var(--text-primary);">Catatan Penting:</strong>
+            <ul style="padding-left: 16px; margin-top: 8px; color: var(--text-muted); list-style-type: disc;">
                <li>Gunakan template CSV yang disediakan.</li>
                <li>Jangan gunakan tanda kutip ganda (") di dalam file CSV.</li>
             </ul>
