@@ -204,6 +204,14 @@ $routes->group('admin', function (RouteCollection $routes) {
       $routes->get('photos/backup', 'Backup::photosBackup');
       $routes->post('photos/restore', 'Backup::photosRestore');
    });
+
+   // WhatsApp Gateway
+   $routes->group('whatsapp', ['namespace' => 'App\Controllers\Admin'], function ($routes) {
+      $routes->get('/', 'WhatsappGateway::index');
+      $routes->get('status', 'WhatsappGateway::status');
+      $routes->post('logout', 'WhatsappGateway::logout');
+      $routes->post('test-send', 'WhatsappGateway::testSend');
+   });
 });
 
 // Teacher

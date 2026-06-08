@@ -21,6 +21,7 @@ if (is_wali_kelas()) {
       ['title' => 'Data Petugas',      'url' => 'admin/petugas',           'icon' => 'manage_accounts','context' => 'petugas',        'visible' => is_superadmin()],
       ['title' => 'Pengaturan',        'url' => 'admin/general-settings',  'icon' => 'settings',     'context' => 'general_settings','visible' => is_superadmin() || is_kepsek()],
       ['title' => 'Backup & Restore',  'url' => 'admin/backup',            'icon' => 'backup',       'context' => 'backup',          'visible' => is_superadmin()],
+      ['title' => 'WhatsApp Gateway',  'url' => 'admin/whatsapp',          'icon' => 'settings_input_antenna', 'context' => 'whatsapp', 'visible' => is_superadmin()],
    ];
 }
 

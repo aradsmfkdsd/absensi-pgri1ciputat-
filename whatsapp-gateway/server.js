@@ -2,8 +2,11 @@ import makeWASocket, { DisconnectReason, useMultiFileAuthState, fetchLatestBaile
 
 import { Boom } from '@hapi/boom';
 import qrcode from 'qrcode-terminal';
+import QRCode from 'qrcode';
 import express from 'express';
 import pino from 'pino';
+import fs from 'fs';
+import path from 'path';
 
 const app = express();
 app.use(express.json());
@@ -11,6 +14,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 let sock = null;
 let connectionState = 'connecting';
+let latestQR = null;
 
 async function connectToWhatsApp() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');
@@ -41,10 +45,19 @@ async function connectToWhatsApp() {
             console.log('==================================================\n');
             qrcode.generate(qr, { small: true });
             console.log('\nSilakan buka WhatsApp > Perangkat Tertaut > Tautkan Perangkat.');
+            
+            QRCode.toDataURL(qr)
+                .then(url => {
+                    latestQR = url;
+                })
+                .catch(err => {
+                    console.error('[WA-GATEWAY] Gagal generate Base64 QR Code:', err.message);
+                });
         }
         
         if (connection === 'close') {
             connectionState = 'disconnected';
+            latestQR = null;
             const errorReason = lastDisconnect?.error;
             const shouldReconnect = (errorReason instanceof Boom)
                 ? errorReason.output?.statusCode !== DisconnectReason.loggedOut
@@ -57,6 +70,7 @@ async function connectToWhatsApp() {
             }
         } else if (connection === 'open') {
             connectionState = 'connected';
+            latestQR = null;
             console.log('\n[WA-GATEWAY] WhatsApp Gateway siap digunakan dan terhubung!');
         }
     });
@@ -110,6 +124,75 @@ app.post('/send-message', async (req, res) => {
         return res.status(500).json({
             status: false,
             message: 'Gagal mengirim pesan',
+            error: error.message
+        });
+    }
+});
+
+// Endpoint untuk status koneksi
+app.get('/status', (req, res) => {
+    let state = connectionState;
+    if (latestQR) {
+        state = 'qr_ready';
+    }
+    
+    return res.json({
+        status: true,
+        state: state,
+        qr: latestQR,
+        user: sock && sock.user ? {
+            id: sock.user.id,
+            name: sock.user.name || sock.user.id.split('@')[0]
+        } : null
+    });
+});
+
+// Endpoint untuk logout
+app.post('/logout', async (req, res) => {
+    try {
+        console.log('[WA-GATEWAY] Melakukan logout dan pembersihan sesi...');
+        
+        if (sock) {
+            sock.ev.removeAllListeners('connection.update');
+            try {
+                await sock.logout();
+            } catch (e) {
+                console.log('[WA-GATEWAY] Gagal logout socket:', e.message);
+            }
+            try {
+                sock.end();
+            } catch (e) {
+                // ignore
+            }
+            sock = null;
+        }
+        
+        connectionState = 'disconnected';
+        latestQR = null;
+
+        setTimeout(() => {
+            try {
+                const authDir = 'auth_info_baileys';
+                if (fs.existsSync(authDir)) {
+                    fs.rmSync(authDir, { recursive: true, force: true });
+                    console.log('[WA-GATEWAY] Folder auth_info_baileys berhasil dihapus.');
+                }
+            } catch (err) {
+                console.error('[WA-GATEWAY] Gagal menghapus folder auth_info_baileys:', err.message);
+            }
+            
+            connectToWhatsApp();
+        }, 1000);
+
+        return res.json({
+            status: true,
+            message: 'Logout berhasil, sesi di-reset.'
+        });
+    } catch (error) {
+        console.error('[WA-GATEWAY] Gagal logout:', error);
+        return res.status(500).json({
+            status: false,
+            message: 'Gagal melakukan logout',
             error: error.message
         });
     }
