@@ -123,16 +123,16 @@
 
    <!-- Right Column: Info & Operational Guide -->
    <div class="col-lg-4">
-      <div class="card p-6 bg-gradient-to-br from-primary to-purple-700 text-white border-0 shadow-lg mb-6">
-         <div class="flex items-center gap-3 mb-4 opacity-95">
-            <i class="material-icons text-[24px]">info_outline</i>
-            <h3 class="text-sm font-bold uppercase tracking-wider">Integrasi Notifikasi</h3>
+      <div class="card p-6 mb-6">
+         <div class="flex items-center gap-3 mb-4 border-b border-gray-100 pb-3">
+            <i class="material-icons text-primary">info_outline</i>
+            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wide">Integrasi Notifikasi</h3>
          </div>
-         <p class="text-xs leading-relaxed opacity-90 mb-4">
+         <p class="text-xs text-gray-500 leading-relaxed mb-4">
             WhatsApp Gateway bertindak sebagai jembatan untuk mengirimkan notifikasi absensi masuk dan keluar secara otomatis kepada orang tua siswa.
          </p>
-         <div class="p-3.5 bg-white/10 backdrop-blur-md rounded-xl border border-white/10 text-[11px] leading-relaxed opacity-95">
-            <strong class="block mb-1 text-white">⚙️ Status Notifikasi:</strong>
+         <div class="p-3.5 bg-purple-50 border border-purple-100 rounded-xl text-[11px] leading-relaxed text-purple-700">
+            <strong class="block mb-1 text-purple-900">⚙️ Status Notifikasi:</strong>
             Sistem saat ini dikonfigurasi untuk mengirim pesan secara real-time saat barcode di-tap pada terminal scan kehadiran.
          </div>
       </div>

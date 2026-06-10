@@ -54,19 +54,46 @@ if (!function_exists('avatarColor')) {
       </div>
    </div>
 
-   <!-- Class Pills -->
-   <div style="display: flex; flex-wrap: wrap; gap: 10px;" id="klassPills">
-      <?php foreach ($kelas as $value):
-         $idKelas   = $value['id_kelas'];
-         $namaKelas = $value['kelas'];
-      ?>
-         <button id="kelas-<?= $idKelas; ?>"
-                 onclick="getSiswa(<?= $idKelas; ?>, '<?= esc($namaKelas); ?>')"
-                 class="kelas-pill">
-            <?= esc($namaKelas); ?>
-         </button>
-      <?php endforeach; ?>
-   </div>
+    <!-- Class Pills Grouped by Tingkat -->
+    <div style="display: flex; flex-direction: column; gap: 14px;" id="klassPills">
+       <?php 
+       $groupedKelas = [];
+       foreach ($kelas as $value) {
+           $tingkat = $value['tingkat'];
+           $groupedKelas[$tingkat][] = $value;
+       }
+       $tingkatOrder = ['VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+       foreach (array_keys($groupedKelas) as $k) {
+           if (!in_array($k, $tingkatOrder)) {
+               $tingkatOrder[] = $k;
+           }
+       }
+       
+       foreach ($tingkatOrder as $tingkat): 
+           if (!empty($groupedKelas[$tingkat])):
+       ?>
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 4px 0;">
+             <div style="font-size: 11px; font-weight: 800; color: var(--primary); background: var(--primary-soft); padding: 5px 12px; border-radius: 20px; min-width: 90px; text-align: center; letter-spacing: 0.5px; text-transform: uppercase;">
+                Tingkat <?= esc($tingkat) ?>
+             </div>
+             <div style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1;">
+                <?php foreach ($groupedKelas[$tingkat] as $value):
+                   $idKelas   = $value['id_kelas'];
+                   $namaKelas = $value['kelas'];
+                ?>
+                   <button id="kelas-<?= $idKelas; ?>"
+                           onclick="getSiswa(<?= $idKelas; ?>, '<?= esc($namaKelas); ?>')"
+                           class="kelas-pill">
+                      <?= esc($namaKelas); ?>
+                   </button>
+                <?php endforeach; ?>
+             </div>
+          </div>
+       <?php 
+           endif;
+       endforeach; 
+       ?>
+    </div>
 </div>
 
 <!-- DATA TABLE SECTION (loaded via AJAX) -->
