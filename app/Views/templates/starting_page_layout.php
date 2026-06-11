@@ -14,9 +14,16 @@
 
    <style>
       body {
-         background-color: var(--background);
-         background-image: radial-gradient(var(--slate-200) 0.5px, transparent 0.5px);
-         background-size: 24px 24px;
+         background-color: #f8fafc;
+         background-image: 
+            radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px),
+            radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(192, 132, 252, 0.08) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.05) 0px, transparent 40%),
+            radial-gradient(at 0% 100%, rgba(192, 132, 252, 0.05) 0px, transparent 40%);
+         background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+         position: relative;
+         overflow-x: hidden;
       }
 
       .scanner-layout {
