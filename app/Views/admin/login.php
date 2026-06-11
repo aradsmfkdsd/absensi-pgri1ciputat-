@@ -5,7 +5,7 @@
     <div style="width: 100%; max-width: 960px; margin: 0 auto;">
         
         <!-- Login Wrapper Card -->
-        <div class="card login-card-container" style="border-radius: 24px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 20px 50px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: row; min-height: 550px; margin-bottom: 0 !important;">
+        <div class="card login-card-container" style="border-radius: 24px; background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%); border: 1px solid #e2e8f0; box-shadow: 0 20px 50px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: row; min-height: 550px; margin-bottom: 0 !important;">
             
             <!-- Left Side: School Photo (Hidden on Mobile) -->
             <div class="login-school-banner" style="flex: 1.2; position: relative; background: url('<?= base_url('assets/img/school_building.jpg?v=' . time()); ?>') center center / cover no-repeat;">
@@ -47,7 +47,7 @@
                                 type="<?= $config->validFields === ['email'] ? 'email' : 'text' ?>" 
                                 name="login" 
                                 class="form-control" 
-                                style="width: 100%; height: 46px; padding-left: 48px !important; padding-right: 16px !important; font-size: 14px; border-radius: 10px; background: #f8fafc; border: 1px solid <?php echo session('errors.login') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
+                                style="width: 100%; height: 46px; padding-left: 48px !important; padding-right: 16px !important; font-size: 14px; border-radius: 10px; background: #ffffff; border: 1px solid <?php echo session('errors.login') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
                                 placeholder="Masukkan <?= $config->validFields === ['email'] ? 'email' : 'username' ?>"
                                 autofocus
                             >
@@ -71,7 +71,7 @@
                                 type="password" 
                                 name="password" 
                                 class="form-control" 
-                                style="width: 100%; height: 46px; padding-left: 48px !important; padding-right: 48px !important; font-size: 14px; border-radius: 10px; background: #f8fafc; border: 1px solid <?php echo session('errors.password') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
+                                style="width: 100%; height: 46px; padding-left: 48px !important; padding-right: 48px !important; font-size: 14px; border-radius: 10px; background: #ffffff; border: 1px solid <?php echo session('errors.password') ? '#ef4444' : '#cbd5e1'; ?>; color: #0f172a; box-shadow: none; transition: all 0.2s;" 
                                 placeholder="••••••••"
                             >
                             <button type="button" id="togglePassword" style="position: absolute; right: 16px; background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; color: #94a3b8; outline: none; transition: color 0.2s;">
