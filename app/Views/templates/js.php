@@ -1,5 +1,5 @@
 <?php
-$assetVersion = '1.0.3';
+$assetVersion = '1.0.4';
 ?>
 <!-- jQuery -->
 <script src="<?= base_url('assets/js/core/jquery-3.5.1.min.js?v=' . $assetVersion) ?>"></script>

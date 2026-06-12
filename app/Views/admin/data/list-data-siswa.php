@@ -44,8 +44,8 @@
                         <form action="<?= base_url('admin/siswa/delete/' . $value['id_siswa']); ?>" method="post" class="m-0">
                            <?= csrf_field(); ?>
                            <input type="hidden" name="_method" value="DELETE">
-                           <button title="Hapus" onclick="return confirm('Konfirmasi untuk menghapus data siswa ini?');" type="submit"
-                              class="btn btn-sm btn-outline" style="height: 36px; width: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08);">
+                           <button title="Hapus" type="submit" data-confirm="Konfirmasi untuk menghapus data siswa ini?"
+                              class="btn btn-sm btn-outline btn-delete-confirm" style="height: 36px; width: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08);">
                               <i class="material-icons text-[16px]">delete_outline</i>
                            </button>
                         </form>

@@ -101,9 +101,9 @@
                            <form action="<?= base_url('admin/petugas/delete/' . $value['id']); ?>" method="post" class="d-inline m-0 p-0">
                               <?= csrf_field(); ?>
                               <input type="hidden" name="_method" value="DELETE">
-                              <button onclick="return confirm('Yakin ingin menghapus akun ini?');" type="submit"
+                              <button type="submit" data-confirm="Yakin ingin menghapus akun ini?"
                                  title="Hapus Akun"
-                                 class="btn btn-sm btn-outline" 
+                                 class="btn btn-sm btn-outline btn-delete-confirm" 
                                  style="height: 38px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; padding: 0 14px; color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08);">
                                  <i class="material-icons" style="font-size: 16px;">delete_outline</i>
                               </button>

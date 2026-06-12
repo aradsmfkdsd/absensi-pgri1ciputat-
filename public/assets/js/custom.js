@@ -108,3 +108,21 @@ $(document).on('click', '.checkbox-table', function () {
   }
 });
 
+// Custom delete confirmation using SweetAlert
+$(document).on('click', '.btn-delete-confirm', function (e) {
+  e.preventDefault();
+  var form = $(this).closest('form');
+  var message = $(this).data('confirm') || "Apakah Anda yakin ingin menghapus data ini?";
+  swal({
+    text: message,
+    icon: "warning",
+    buttons: [BaseConfig.textCancel || "Batalkan", "Ya, Hapus!"],
+    dangerMode: true,
+  }).then(function (willDelete) {
+    if (willDelete) {
+      form.submit();
+    }
+  });
+});
+
+
