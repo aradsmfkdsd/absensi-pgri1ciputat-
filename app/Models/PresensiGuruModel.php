@@ -32,7 +32,7 @@ class PresensiGuruModel extends Model implements PresensiInterface
       return $result[$this->primaryKey];
    }
 
-   public function absenMasuk(string $id, $date, $time)
+   public function absenMasuk(string $id, $date, $time, string $keterangan = '')
    {
       $this->save([
          'id_guru' => $id,
@@ -40,7 +40,7 @@ class PresensiGuruModel extends Model implements PresensiInterface
          'jam_masuk' => $time,
          // 'jam_keluar' => '',
          'id_kehadiran' => Kehadiran::Hadir->value,
-         'keterangan' => ''
+         'keterangan' => $keterangan
       ]);
    }
 

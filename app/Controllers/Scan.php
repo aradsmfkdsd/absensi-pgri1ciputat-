@@ -92,7 +92,12 @@ class Scan extends BaseController
 
       $date = Time::today()->toDateString();
       $time = Time::now()->toTimeString();
-      $messageString = " sudah absen masuk pada tanggal $date jam $time";
+
+      $jamMasukLimit = getenv('JAM_MASUK') ?: '07:00';
+      $isTerlambat = $time > ($jamMasukLimit . ':00');
+      $keterangan = $isTerlambat ? 'Terlambat' : '';
+
+      $messageString = " sudah absen masuk pada tanggal $date jam $time" . ($isTerlambat ? ' (Terlambat)' : '');
       // absen masuk
       switch ($type) {
          case TipeUser::Guru:
@@ -106,7 +111,7 @@ class Scan extends BaseController
                return $this->showErrorView('Anda sudah absen hari ini', $data);
             }
 
-            $this->presensiGuruModel->absenMasuk($idGuru, $date, $time);
+            $this->presensiGuruModel->absenMasuk($idGuru, $date, $time, $keterangan);
             $messageString = $result['nama_guru'] . ' dengan NIP ' . $result['nuptk'] . $messageString;
             $data['presensi'] = $this->presensiGuruModel->getPresensiByIdGuruTanggal($idGuru, $date);
 
@@ -124,7 +129,7 @@ class Scan extends BaseController
                return $this->showErrorView('Anda sudah absen hari ini', $data);
             }
 
-            $this->presensiSiswaModel->absenMasuk($idSiswa, $date, $time, $idKelas);
+            $this->presensiSiswaModel->absenMasuk($idSiswa, $date, $time, $idKelas, $keterangan);
             $messageString = 'Siswa ' . $result['nama_siswa'] . ' dengan NIS ' . $result['nis'] . $messageString;
             $data['presensi'] = $this->presensiSiswaModel->getPresensiByIdSiswaTanggal($idSiswa, $date);
 
