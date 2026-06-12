@@ -187,6 +187,11 @@ class KelasModel extends BaseModel
                $jurusanModel = new JurusanModel();
                $jurusan = $jurusanModel->where('jurusan', $jurusanName)->first();
 
+               if (empty($jurusan)) {
+                  // Fallback to the first available jurusan in the database
+                  $jurusan = $jurusanModel->first();
+               }
+
                if (!empty($jurusan)) {
                   $insertData = [
                      'tingkat' => $tingkat,
