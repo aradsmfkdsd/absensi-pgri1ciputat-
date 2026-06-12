@@ -69,7 +69,7 @@
          <form action="<?= base_url('admin/petugas/downloadCSVFilePost'); ?>" method="post">
             <?= csrf_field(); ?>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-               <button type="button" class="btn btn-outline w-full justify-center" style="border-color: var(--border); background: var(--surface);" data-toggle="modal" data-target="#modalGuru">
+               <button type="button" class="btn btn-outline w-full justify-center" style="border-color: var(--border); background: var(--surface);" data-bs-toggle="modal" data-bs-target="#modalGuru">
                   <i class="material-icons">list_alt</i> Lihat ID Guru
                </button>
                <button class="btn btn-primary w-full justify-center" name="submit" value="csv_petugas_template" style="background: var(--primary); color: #fff;">
@@ -96,7 +96,7 @@
       <div class="modal-content">
          <div class="modal-header">
             <h5 class="modal-title" id="modalGuruTitle">Daftar ID Guru</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
             </button>
          </div>

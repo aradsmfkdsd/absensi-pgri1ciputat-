@@ -53,7 +53,7 @@
                             <td><b><?= $value['jam_keluar'] ?? '-'; ?></b></td>
                             <td><?= $value['keterangan'] ?? '-'; ?></td>
                             <td>
-                                <button data-toggle="modal" data-target="#ubahModal" onclick="getDataKehadiran(<?= $value['id_presensi'] ?? '-1'; ?>, <?= $value['id_siswa']; ?>)" class="btn btn-info p-2"
+                                <button data-bs-toggle="modal" data-bs-target="#ubahModal" onclick="getDataKehadiran(<?= $value['id_presensi'] ?? '-1'; ?>, <?= $value['id_siswa']; ?>)" class="btn btn-info p-2"
                                     id="<?= $value['nis']; ?>">
                                     <i class="material-icons">edit</i>
                                     Edit

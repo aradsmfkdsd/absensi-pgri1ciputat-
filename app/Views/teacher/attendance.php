@@ -33,7 +33,7 @@
          <div class="modal-content">
             <div class="modal-header flex justify-between items-center">
                <h5 class="modal-title font-semibold text-gray-800" id="modalUbahKehadiran">Ubah Kehadiran Siswa</h5>
-               <button type="button" class="text-gray-400 hover:text-gray-600 transition-colors" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="text-gray-400 hover:text-gray-600 transition-colors" data-bs-dismiss="modal" aria-label="Close">
                   <i class="material-icons text-2xl">close</i>
                </button>
             </div>

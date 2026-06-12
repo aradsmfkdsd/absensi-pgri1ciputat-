@@ -109,8 +109,8 @@ $total = count($data ?? []);
                <td style="padding: 18px 20px; text-align: center; border-bottom: 1px solid #f1f5f9; white-space: nowrap;">
                   <?php if (!$lewat): ?>
                      <button class="btn btn-sm btn-outline"
-                             data-toggle="modal"
-                             data-target="#ubahModal"
+                             data-bs-toggle="modal"
+                             data-bs-target="#ubahModal"
                              onclick="getDataKehadiran(<?= $row['id_presensi'] ?? -1; ?>, <?= $row['id_siswa']; ?>)"
                              style="padding: 8px 14px; height: 38px; border-radius: 8px; border-color: #cbd5e1; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s;">
                         <i class="material-icons" style="font-size: 16px; color: #64748b;">edit</i>
