@@ -101,13 +101,12 @@
             </button>
          </div>
          <div class="modal-body" style="padding: 0;">
-            <div class="table-wrapper" style="border: none; border-radius: 0;">
+            <div class="table-wrapper" style="border: none; border-radius: 0; max-height: 400px; overflow-y: auto;">
                <table>
                   <thead>
                      <tr>
-                        <th>ID</th>
+                        <th style="width: 100px;">ID</th>
                         <th>Kelas / Tingkat</th>
-                        <th>Jurusan</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -115,7 +114,6 @@
                         <tr>
                            <td style="font-weight: 600; color: var(--primary);">#<?= $value['id_kelas']; ?></td>
                            <td style="font-weight: 500; color: var(--text-primary);"><?= $value['kelas']; ?></td>
-                           <td><?= $value['jurusan']; ?></td>
                         </tr>
                      <?php endforeach; ?>
                   </tbody>
@@ -152,6 +150,32 @@
     background: var(--danger-soft);
     color: #991B1B;
     border: 1px solid rgba(239,68,68,0.2);
+}
+/* Modal table style updates */
+#modalKelas table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#modalKelas th {
+    padding: 14px 24px;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 2px solid var(--border-soft);
+    background-color: rgba(0, 0, 0, 0.02);
+}
+#modalKelas td {
+    padding: 14px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-soft);
+}
+#modalKelas tr:last-child td {
+    border-bottom: none;
+}
+#modalKelas tr:hover {
+    background-color: rgba(0, 0, 0, 0.01);
 }
 </style>
 
