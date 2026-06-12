@@ -137,7 +137,8 @@ class PetugasModel extends Model
                $data['password_hash'] = \Myth\Auth\Password::hash($password);
 
                $data['is_superadmin'] = getCSVInputValue($item, 'role', 'int'); // 1 or 0
-               $idGuru = getCSVInputValue($item, 'id_guru', 'int');
+               $idGuruRaw = getCSVInputValue($item, 'id_guru');
+               $idGuru = cleanNumber(preg_replace('/[^0-9]/', '', $idGuruRaw));
                
                // Validate id_guru foreign key reference
                if (!empty($idGuru)) {

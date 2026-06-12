@@ -180,12 +180,13 @@ class SiswaModel extends Model
          foreach ($array as $item) {
             if ($i == $index) {
                $data = array();
-               $data['nis'] = getCSVInputValue($item, 'nis', 'int');
-               $data['nama_siswa'] = getCSVInputValue($item, 'nama_siswa');
-               $data['id_kelas'] = getCSVInputValue($item, 'id_kelas', 'int');
-               $data['jenis_kelamin'] = getCSVInputValue($item, 'jenis_kelamin');
-               $data['no_hp'] = getCSVInputValue($item, 'no_hp');
-               $data['unique_code'] = generateToken();
+                $data['nis'] = getCSVInputValue($item, 'nis', 'int');
+                $data['nama_siswa'] = getCSVInputValue($item, 'nama_siswa');
+                $idKelasRaw = getCSVInputValue($item, 'id_kelas');
+                $data['id_kelas'] = cleanNumber(preg_replace('/[^0-9]/', '', $idKelasRaw));
+                $data['jenis_kelamin'] = getCSVInputValue($item, 'jenis_kelamin');
+                $data['no_hp'] = getCSVInputValue($item, 'no_hp');
+                $data['unique_code'] = generateToken();
 
                $this->insert($data);
                return $data;
