@@ -47,7 +47,7 @@ class KelasModel extends BaseModel
          ->join('tb_jurusan', 'tb_kelas.id_jurusan = tb_jurusan.id', 'left')
          ->join('tb_guru', 'tb_kelas.id_wali_kelas = tb_guru.id_guru', 'left')
          ->orderBy('tb_kelas.id_jurusan')
-         ->orderBy('tb_kelas.tingkat')
+         ->orderBy('CASE tb_kelas.tingkat WHEN "VII" THEN 1 WHEN "7" THEN 1 WHEN "VIII" THEN 2 WHEN "8" THEN 2 WHEN "IX" THEN 3 WHEN "9" THEN 3 ELSE 4 END', 'ASC', false)
          ->orderBy('tb_kelas.index_kelas')
          ->get()->getResult('array');
    }
