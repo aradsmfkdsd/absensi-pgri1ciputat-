@@ -56,6 +56,14 @@ $routes->group('scan', function (RouteCollection $routes) {
    $routes->post('cek', 'Scan::cekKode');
 });
 
+$routes->group('scanner', function (RouteCollection $routes) {
+   $routes->get('', 'Scan::kiosk');
+   $routes->get('masuk', 'Scan::kiosk/Masuk');
+   $routes->get('pulang', 'Scan::kiosk/Pulang');
+
+   $routes->post('cek', 'Scan::cekKode');
+});
+
 
 
 // Admin

@@ -35,6 +35,12 @@ class Scan extends BaseController
       return view('scan/scan', $data);
    }
 
+   public function kiosk($t = 'Masuk')
+   {
+      $data = ['waktu' => $t, 'title' => 'Kiosk Absensi - SMP PGRI 1 CIPUTAT'];
+      return view('scan/kiosk', $data);
+   }
+
    public function cekKode()
    {
       // ambil variabel POST
