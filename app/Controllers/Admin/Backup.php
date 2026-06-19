@@ -38,7 +38,8 @@ class Backup extends BaseController
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
 
-        $command = "mysqldump --skip-ssl --host={$hostname} --user={$username} --password={$password} {$database}";
+        $passwordParam = $password !== '' ? '--password="' . addcslashes($password, '"\\$``') . '"' : '';
+        $command = "mysqldump --host={$hostname} --user={$username} {$passwordParam} {$database}";
         passthru($command);
         exit;
     }
@@ -64,7 +65,8 @@ class Backup extends BaseController
 
         try {
             $filePath = $file->getTempName();
-            $command = "mysql --skip-ssl --host={$hostname} --user={$username} --password={$password} {$database} < {$filePath}";
+            $passwordParam = $password !== '' ? '--password="' . addcslashes($password, '"\\$``') . '"' : '';
+            $command = "mysql --host={$hostname} --user={$username} {$passwordParam} {$database} < \"{$filePath}\"";
 
             // Execute the command
             exec($command . ' 2>&1', $output, $returnVar);
